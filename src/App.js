@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import NavBar from "./Components/NavBar";
+import HomePage from "./containers/HomePage";
+import Skills from "./containers/Skills";
+import Projects from "./Components/Projects";
+// import { NavLink } from "react-router-dom";
+import { Switch, Route, withRouter } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import "./App.css";
+
+class App extends Component {
+  render() {
+    return (
+      <div id="app">
+        <main className="Portfolio">
+          <header>
+            <h1>PEYMAN SIMON HEWITT - PORTFOLIO</h1>
+            <h3>Junior full stack developer</h3>
+            <NavBar />
+          </header>
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route path="/Skills" component={Skills} />
+            {/* <Route path="/Skills/id" Component={Skill} /> */}
+            <Route path="/Projects" component={Projects} />
+          </Switch>
+          <footer>Links</footer>
+        </main>
+      </div>
+    );
+  }
 }
 
-export default App;
+export default withRouter(App);
